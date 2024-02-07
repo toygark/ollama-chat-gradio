@@ -10,4 +10,6 @@ This application provides a user-friendly chat interface for interacting with va
 
 ## How to Run
 
-Ensure you have Gradio and Ollama installed in your Python environment and then `python app.py`
+- Ensure you have working Ollama setup.
+- Install required packages `pip intall -r requirements.txt`
+- Then `python app.py`
