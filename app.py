@@ -1,11 +1,16 @@
-import ollama
+import sys
+from ollama import Client
 import gradio as gr
 
-model_list = ollama.list()
+host_url = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:11434/"
+
+client = Client(host=host_url)
+
+model_list = client.list()
 model_names = [model['model'] for model in model_list['models']]
 
 def chat_ollama(user_input, history, Model):
-    stream = ollama.chat(
+    stream = client.chat(
         model=Model,
         messages=[
                 {
@@ -24,7 +29,7 @@ def chat_ollama(user_input, history, Model):
 
 with gr.Blocks(title="Ollama Chat", fill_height=True) as demo:
     gr.Markdown("# Ollama Chat")
-    model_list = gr.Dropdown(model_names, value="llama2:latest", label="Model", info="Model to chat with")
+    model_list = gr.Dropdown(model_names, value="llama3.1:latest", label="Model", info="Model to chat with")
     gr.ChatInterface(chat_ollama, additional_inputs=model_list)
 
 if __name__ == "__main__":
