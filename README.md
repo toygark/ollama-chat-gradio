@@ -13,3 +13,7 @@ This application provides a user-friendly chat interface for interacting with va
 - Ensure you have working Ollama setup.
 - Install required packages `pip intall -r requirements.txt`
 - Then `python app.py`
+
+## Advanced
+
+- You can point cutom Ollama backend URL by `python app.py http://your-remote-running-ollama:port/` when your ollama is running on remote host for example.
