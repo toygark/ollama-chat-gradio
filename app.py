@@ -29,8 +29,8 @@ def chat_ollama(user_input, history, Model):
 
 with gr.Blocks(title="Ollama Chat", fill_height=True) as demo:
     gr.Markdown("# Ollama Chat")
-    model_list = gr.Dropdown(model_names, value="llama3.1:latest", label="Model", info="Model to chat with")
+    model_list = gr.Dropdown(model_names, value="gemma3:1b", label="Model", info="Model to chat with")
     gr.ChatInterface(chat_ollama, additional_inputs=model_list)
 
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(share=True)
